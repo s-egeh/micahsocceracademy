@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micah Soccer Academy | Home</title>
+    
+    <!-- SEO and Social Tags -->
+    <meta name="description" content="Official website for Micah Soccer Academy, developing youth soccer talent in the Awutu Senya West Football Association.">
+    <meta property="og:title" content="Micah Soccer Academy">
+    <meta property="og:description" content="Nurturing and developing young soccer players by providing high-quality training, education, and mentorship.">
+    <!-- TODO: Replace this placeholder with your actual logo URL for social media previews -->
+    <meta property="og:image" content="https://placehold.co/1200x630/1f7a2d/d4af37?text=Micah+Soccer+Academy">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon (Inline SVG - Self-contained) -->
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSIjMWY3YTJkIiBkPSJNMCAwaDEwMHYxMDBIMHoiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIyNSIgZmlsbD0iI2Q0YWYzNyIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmN2EyZCIgc3Ryb2tlLXdpZHRoPSIzIiBkPSJNNjcuNjggMzcuNWwtMy4wMyA5LjI3aDkuNzVsLTMuMDMgOS4yN2gtOS43NWwtMy4wMyA5LjI3aC05Ljc1bC0zLjAzLTkuMjdoLTkuNzVsLTMuMDMtOS4yN2g5Ljc1bDMuMDMtOS4yN2g5Ljc1ek01MCAyN2wzLjA5IDkuNTJoOS45NGwtOC4wNCA1Ljg5IDMuMDkgOS41MmwtOC4wNC01Ljg5LTguMDQgNS44OWwzLjA5LTkuNTItOC4wNC01Ljg5aDkuOTRMNTAgMjdaIi8+PC9zdmc+">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-green': '#1f7a2d',
+                        'brand-gold': '#d4af37',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'reveal-up': 'reveal-up 1s ease-out forwards',
+                        'roll-ball': 'roll-ball 20s linear infinite',
+                        'hero-ball': 'hero-ball 8s ease-in-out infinite',
+                        'fade-in': 'fade-in 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        'reveal-up': {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'fade-in': {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        'roll-ball': {
+                            '0%': { transform: 'translateX(-200px) rotate(0deg)' },
+                            '100%': { transform: 'translateX(100vw) rotate(3600deg)' },
+                        },
+                        'hero-ball': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '25%': { transform: 'translateY(-30px) rotate(90deg)' },
+                            '50%': { transform: 'translateY(0) rotate(180deg)' },
+                            '75%': { transform: 'translateY(-15px) rotate(270deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles (including adapted pitch CSS) -->
+    <style>
+        /* Base scroll-reveal styles */
+        .reveal {
+            opacity: 0;
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-up {
+             opacity: 0;
+             transform: translateY(50px);
+        }
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sticky header padding */
+        .sticky-nav-padding {
+            padding-top: 80px; /* Adjust based on sticky header height */
+        }
+        
+        /* Parallax-like effect for hero */
+        #home {
+            background-attachment: fixed; /* Simple parallax */
+        }
+
+        /* --- Adapted Interactive Pitch CSS --- */
+        /* (Combined with Tailwind for consistency) */
+
+        .squad-container {
+            width: 100%;
+            max-width: 900px; /* Wider for better pitch layout */
+            margin: auto;
+        }
+
+        .pitch-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 7 / 10; /* Pitch aspect ratio */
+            margin-bottom: 2rem;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .pitch-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        #pitch {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            width: 100%;
+        }
+
+        .player-marker {
+            position: absolute;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            width: 80px; /* Fixed size for player markers */
+            transform: translate(-50%, -50%); /* Center the marker */
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .player-marker:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .player-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #f0f0f0; /* var(--color-grey) */
+            border: 3px solid #d4af37; /* var(--color-gold) */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .player-photo svg {
+            width: 36px;
+            height: 36px;
+            fill: #333;
+        }
+
+        .player-name {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffffff; /* var(--color-white) */
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 4px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .captain-armband {
+            background-color: #d4af37; /* var(--color-gold) */
+            color: #1a1a1a; /* var(--color-dark) */
+            font-weight: bold;
+            font-size: 10px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- Player Profile Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #18181b; /* Tailwind zinc-900 */
+            border: 2px solid #d4af37; /* var(--color-gold) */
+            border-radius: 15px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.visible .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-player-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #d4af37; /* var(--color-gold) */
+            margin: 0 auto 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* var(--color-grey) */
+            overflow: hidden;
+        }
+
+        .modal-player-photo svg {
+            width: 70px;
+            height: 70px;
+            fill: #333;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            color: #555;
+            font-size: 1.2rem;
+            border: 1px dashed #555;
+        }
+
+        /* League Table Responsive */
+        @media (max-width: 640px) {
+            .league-table th:nth-child(4),
+            .league-table td:nth-child(4),
+            .league-table th:nth-child(5),
+            .league-table td:nth-child(5),
+            .league-table th:nth-child(6),
+            .league-table td:nth-child(6),
+            .league-table th:nth-child(7),
+            .league-table td:nth-child(7),
+            .league-table th:nth-child(8),
+            .league-table td:nth-child(8) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-900 text-white font-sans selection:bg-brand-gold selection:text-black">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-zinc-900/80 backdrop-blur-md shadow-lg fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-2">
+                <!-- TODO: Replace this text with your logo.png -->
+                <!-- <img src="logo.png" alt="Micah Soccer Academy Logo" class="h-12"> -->
+                <span class="text-xl sm:text-2xl font-bold text-white">
+                    MICAH <span class="text-brand-gold">SOCCER</span> ACADEMY
+                </span>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white p-2 z-50">
+                <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="#home" class="text-gray-300 hover:text-brand-gold transition duration-200">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-brand-gold transition duration-200">About</a>
+                <a href="#programs" class="text-gray-300 hover:text-brand-gold transition duration-200">Programs</a>
+                <a href="#coaches" class="text-gray-300 hover:text-brand-gold transition duration-200">Coaches</a>
+                <a href="#squad" class="text-gray-300 hover:text-brand-gold transition duration-200">Squad</a>
+                <a href="#fixtures" class="text-gray-300 hover:text-brand-gold transition duration-200">Fixtures</a>
+                <a href="#league" class="text-gray-300 hover:text-brand-gold transition duration-200">League</a>
+                <a href="#gallery" class="text-gray-300 hover:text-brand-gold transition duration-200">Gallery</a>
+                <a href="#contact" class="text-gray-300 hover:text-brand-gold transition duration-200">Contact</a>
+                <a href="#sponsors" class="bg-brand-gold text-black font-bold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-300 transition duration-200">Sponsor</a>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu (Dropdown) -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 bg-zinc-900 border-t border-zinc-700">
+            <div class="flex flex-col space-y-2 p-4">
+                <a href="#home" class="mobile-nav-link text-gray-300 hover:text-brand-gold transition duration-200 p-2 rounded">Home</a>
+                <a href="#about" class="mobile-nav-link text-gray-300 hover:text-brand-gold transition duration-200 p-2 rounded">About</a>
+                <a href="#programs" class="mobile-nav-link text-gray-300 hover:text-brand-gold transition duration-200 p-2 rounded">Programs</a>
+                <a href="#coaches" class="mobile-nav-link text-gray-300 hover:text-brand-gold transition duration-200 p-2 rounded">Coaches</a>
+                <a href="#squad" class="mobile-nav-link text-gray-300 hover:text-brand-gold transition duration-200 p-2 rounded">Squad</a>
+                <a href="#fixtures" class="mobile-nav-link text-gray-300 hover:text-brand-gold transition duration-200 p-2 rounded">Fixtures</a>
+                <a href="#league" class="mobile-nav-link text-gray-300 hover:text-brand-gold transition duration-200 p-2 rounded">League</a>
+                <a href="#gallery" class="mobile-nav-link text-gray-300 hover:text-brand-gold transition duration-200 p-2 rounded">Gallery</a>
+                <a href="#contact" class="mobile-nav-link text-gray-300 hover:text-brand-gold transition duration-200 p-2 rounded">Contact</a>
+                <a href="#sponsors" class="mt-2 text-center bg-brand-gold text-black font-bold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-300 transition duration-200">Sponsor</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main>
+
+        <!-- Home (Hero) Section -->
+        <section id="home" class="h-screen min-h-[600px] flex items-center justify-center relative text-center text-white bg-cover bg-center" style="background-image: linear-gradient(rgba(24, 24, 27, 0.7), rgba(24, 24, 27, 0.7)), url('https://placehold.co/1920x1080/1f7a2d/000000?text=Academy+Training+Photo');">
+            <!-- Hero Animation -->
+            <div class="absolute top-1/4 left-1/4 animate-hero-ball opacity-30">
+                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"></path><path d="M4.5 12H19.5"></path><circle cx="12" cy="12" r="10" stroke-width="1"></circle></svg>
+            </div>
+            
+            <div class="z-10 relative reveal-up">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-shadow-lg">
+                    FORGE YOUR <span class="text-brand-gold">LEGACY</span>
+                </h1>
+                <p class="mt-4 sm:mt-6 text-lg sm:text-xl max-w-2xl mx-auto">
+                    Nurturing talent, building character. Join the elite Micah Soccer Academy.
+                </p>
+                <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#programs" class="bg-brand-gold text-black font-bold py-3 px-8 rounded-lg shadow-xl text-lg hover:bg-yellow-300 transition duration-300 transform hover:scale-105">
+                        View Programs
+                    </a>
+                    <a href="#contact" class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-white hover:text-black transition duration-300 transform hover:scale-105">
+                        Join a Trial
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Counter Section -->
+        <section class="bg-zinc-800 py-16 sm:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="reveal-up">
+                        <span class="text-4xl sm:text-5xl font-bold text-brand-gold" data-counter-target="8">0</span>
+                        <p class="mt-2 text-lg text-gray-300">Years Established</p>
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 100ms;">
+                        <span class="text-4xl sm:text-5xl font-bold text-brand-gold" data-counter-target="150">0</span>
+                        <p class="mt-2 text-lg text-gray-300">Players Trained</p>
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 200ms;">
+                        <span class="text-4xl sm:text-5xl font-bold text-brand-gold" data-counter-target="6">0</span>
+                        <p class="mt-2 text-lg text-gray-300">Age Groups</p>
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 300ms;">
+                        <span class="text-4xl sm:text-5xl font-bold text-brand-gold" data-counter-target="12">0</span>
+                        <p class="mt-2 text-lg text-gray-300">Dedicated Coaches</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 sm:py-32 bg-zinc-900 sticky-nav-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center reveal-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-gold">About Micah Soccer Academy</h2>
+                    <p class="mt-4 text-lg text-gray-300">We are more than just a club. We are a community dedicated to developing exceptional players and outstanding individuals.</p>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="reveal-up" style="transition-delay: 100ms;">
+                        <h3 class="text-2xl font-bold text-brand-gold">Our Vision</h3>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            To be the leading youth soccer academy in our region — producing confident, skilled players and responsible citizens — and to create opportunities for players to progress into professional or collegiate football while promoting community pride.
+                        </p>
+                    </div>
+                    <div class="reveal-up" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl font-bold text-brand-gold">Our Mission</h3>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            To nurture and develop young soccer players by providing high-quality training, education, and mentorship.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-16 reveal-up" style="transition-delay: 300ms;">
+                    <h3 class="text-2xl font-bold text-brand-gold text-center">Core Objectives</h3>
+                    <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <li class="bg-zinc-800 p-6 rounded-lg shadow-lg">
+                            <p class="text-gray-300">Cultivate technical, tactical, physical, and mental skills.</p>
+                        </li>
+                        <li class="bg-zinc-800 p-6 rounded-lg shadow-lg">
+                            <p class="text-gray-300">Instill values such as discipline, teamwork, respect, and sportsmanship.</p>
+                        </li>
+                        <li class="bg-zinc-800 p-6 rounded-lg shadow-lg">
+                            <p class="text-gray-300">Provide clear pathways for players to reach their full potential.</p>
+                        </li>
+                        <li class="bg-zinc-800 p-6 rounded-lg shadow-lg">
+                            <p class="text-gray-300">Promote a healthy lifestyle and inspire a lifelong passion for sport.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Programs Section -->
+        <section id="programs" class="py-20 sm:py-32 bg-zinc-800 sticky-nav-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center reveal-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-gold">Our Programs</h2>
+                    <p class="mt-4 text-lg text-gray-300">Structured development for every age and skill level, from U8 to U18.</p>
+                </div>
+                
+                <div id="programs-grid" class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Program cards will be dynamically inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Coaches Section -->
+        <section id="coaches" class="py-20 sm:py-32 bg-zinc-900 sticky-nav-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center reveal-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-gold">Meet the Coaches</h2>
+                    <p class="mt-4 text-lg text-gray-300">Our experienced and certified staff are dedicated to player development.</p>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Coach 1 -->
+                    <div class="bg-zinc-800 rounded-lg shadow-lg overflow-hidden reveal-up" style="transition-delay: 100ms;">
+                        <img src="https://placehold.co/400x400/1f7a2d/ffffff?text=Coach+Photo" alt="Coach 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white">Head Coach Name</h3>
+                            <p class="text-brand-gold">UEFA A License</p>
+                            <p class="mt-2 text-gray-400">Head coach bio snippet... Focused on tactical development and player mentorship.</p>
+                        </div>
+                    </div>
+                    <!-- Coach 2 -->
+                    <div class="bg-zinc-800 rounded-lg shadow-lg overflow-hidden reveal-up" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/400x400/1f7a2d/ffffff?text=Coach+Photo" alt="Coach 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white">Assistant Coach</h3>
+                            <p class="text-brand-gold">FA Level 2</p>
+                            <p class="mt-2 text-gray-400">Specializes in technical skills and youth physical conditioning.</p>
+                        </div>
+                    </div>
+                    <!-- Coach 3 -->
+                    <div class="bg-zinc-800 rounded-lg shadow-lg overflow-hidden reveal-up" style="transition-delay: 300ms;">
+                        <img src="https://placehold.co/400x400/1f7a2d/ffffff?text=Coach+Photo" alt="Coach 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white">Goalkeeping Coach</h3>
+                            <p class="text-brand-gold">GK Certified</p>
+                            <p class="mt-2 text-gray-400">Dedicated goalkeeping expert with 10 years of playing experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Squad / Interactive Pitch Section -->
+        <section id="squad" class="py-20 sm:py-32 bg-zinc-800 sticky-nav-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center reveal-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-gold">Academy Squad</h2>
+                    <p class="mt-4 text-lg text-gray-300">Meet the starting XI and substitutes. Click a player to see their profile.</p>
+                </div>
+
+                <div class="squad-container mt-16 reveal-up">
+                    <div class="pitch-wrapper" id="pitch-wrapper">
+                        <!-- SVG Pitch Background -->
+                        <svg class="pitch-svg" viewBox="0 0 700 1000" preserveAspectRatio="xMidYMid meet">
+                            <rect width="700" height="1000" fill="#1f7a2d" />
+                            <rect x="5" y="5" width="690" height="990" fill="none" stroke="#fff" stroke-width="4" opacity="0.6"/>
+                            <line x1="5" y1="500" x2="695" y2="500" stroke="#fff" stroke-width="4" opacity="0.6"/>
+                            <circle cx="350" cy="500" r="91.5" stroke="#fff" stroke-width="4" fill="none" opacity="0.6"/>
+                            <circle cx="350" cy="500" r="5" fill="#fff" opacity="0.6"/>
+                            <!-- Our Goal (Top) -->
+                            <rect x="130" y="5" width="440" height="180" fill="none" stroke="#fff" stroke-width="4" opacity="0.6"/>
+                            <rect x="250" y="5" width="200" height="60" fill="none" stroke="#fff" stroke-width="4" opacity="0.6"/>
+                            <rect x="300" y="-5" width="100" height="20" fill="none" stroke="#fff" stroke-width="6" />
+                            <!-- Opponent Goal (Bottom) -->
+                            <rect x="130" y="815" width="440" height="180" fill="none" stroke="#fff" stroke-width="4" opacity="0.6"/>
+                            <rect x="250" y="935" width="200" height="60" fill="none" stroke="#fff" stroke-width="4" opacity="0.6"/>
+                            <rect x="300" y="985" width="100" height="20" fill="none" stroke="#fff" stroke-width="6" />
+                        </svg>
+                        <!-- Player Markers will be injected here by JS -->
+                        <div id="pitch"></div>
+                    </div>
+
+                    <!-- Substitutes Bench -->
+                    <div id="bench-container" class="bg-zinc-900 rounded-lg p-6 shadow-lg">
+                        <h3 class="text-2xl font-bold text-brand-gold text-center mb-6">Substitutes</h3>
+                        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-6 justify-center" id="bench">
+                            <!-- Bench player markers will be injected here by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fixtures & Results Section -->
+        <section id="fixtures" class="py-20 sm:py-32 bg-zinc-900 sticky-nav-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center reveal-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-gold">Fixtures & Results</h2>
+                    <p class="mt-4 text-lg text-gray-300">Follow the academy's journey through the season.</p>
+                </div>
+
+                <div class="mt-16">
+                    <!-- Upcoming Match -->
+                    <div class="reveal-up">
+                        <h3 class="text-2xl font-bold text-white mb-4">Upcoming Match</h3>
+                        <div class="bg-zinc-800 rounded-lg shadow-lg p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+                            <div class="flex items-center gap-4">
+                                <!-- <img src="logo.png" alt="Micah Logo" class="h-12 w-12"> -->
+                                <span class="text-2xl font-bold text-white">Micah Academy</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="text-3xl font-bold text-brand-gold">VS</span>
+                                <p class="text-gray-400 mt-1">Oct 26, 2025 - 15:00</p>
+                                <p class="text-gray-400">Academy Park</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-2xl font-bold text-white">Opponent FC</span>
+                                <!-- <img src="https://placehold.co/100x100/eeeeee/333333?text=Opponent" alt="Opponent Logo" class="h-12 w-12 rounded-full"> -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Past Results -->
+                    <div class="mt-16 reveal-up" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl font-bold text-white mb-4">Past Results</h3>
+                        <div class="space-y-4">
+                            <!-- Match 1 -->
+                            <div class="bg-zinc-800 rounded-lg shadow-lg p-4 flex items-center justify-between gap-4">
+                                <span class="text-lg font-medium text-white">Micah Academy</span>
+                                <span class="bg-brand-green text-white font-bold py-1 px-3 rounded">3 - 1</span>
+                                <span class="text-lg font-medium text-gray-400">Rival Team</span>
+                            </div>
+                            <!-- Match 2 -->
+                            <div class="bg-zinc-800 rounded-lg shadow-lg p-4 flex items-center justify-between gap-4">
+                                <span class="text-lg font-medium text-white">Local Stars</span>
+                                <span class="bg-zinc-700 text-white font-bold py-1 px-3 rounded">2 - 2</span>
+                                <span class="text-lg font-medium text-gray-400">Micah Academy</span>
+                            </div>
+                        </div>
+                        <div class="text-center mt-6">
+                            <a href="#" class="text-brand-gold hover:text-yellow-300 font-medium">View All Results &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- League Section -->
+        <section id="league" class="py-20 sm:py-32 bg-zinc-800 sticky-nav-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <!-- League Info -->
+                    <div class="lg:col-span-1 reveal-up">
+                        <h2 class="text-3xl font-bold text-brand-gold">League Standings</h2>
+                        <p class="mt-4 text-lg text-gray-300">Awutu Senya West Football Association — 3rd Division</p>
+                        <p class="mt-4 text-gray-400 leading-relaxed">
+                            Micah Soccer Academy competes in the Awutu Senya West Football Association — 3rd Division. The league provides competitive fixtures for community clubs and development teams across the Awutu Senya West district, giving academy players regular, structured match experience and a pathway to higher-level competition.
+                        </p>
+                    </div>
+                    
+                    <!-- League Table -->
+                    <div class="lg:col-span-2 reveal-up" style="transition-delay: 200ms;">
+                        <div class="bg-zinc-900 rounded-lg shadow-lg overflow-x-auto">
+                            <table class="w-full text-left league-table">
+                                <thead class="bg-zinc-700">
+                                    <tr>
+                                        <th class="p-4 font-semibold">Pos</th>
+                                        <th class="p-4 font-semibold">Team</th>
+                                        <th class="p-4 font-semibold">Pld</th>
+                                        <th class="p-4 font-semibold">W</th>
+                                        <th class="p-4 font-semibold">D</th>
+                                        <th class="p-4 font-semibold">L</th>
+                                        <th class="p-4 font-semibold">GD</th>
+                                        <th class="p-4 font-semibold">Pts</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="league-table-body" class="divide-y divide-zinc-700">
+                                    <!-- Row 1 (Micah) -->
+                                    <tr class="bg-brand-green/10">
+                                        <td class="p-4 font-bold text-brand-gold">1</td>
+                                        <td class="p-4 font-medium text-white">
+                                            <span class="flex items-center gap-2">
+                                                <!-- <img src="logo.png" class="h-6 w-6"> -->
+                                                Micah Soccer Academy
+                                            </span>
+                                        </td>
+                                        <td class="p-4">2</td>
+                                        <td class="p-4">1</td>
+                                        <td class="p-4">1</td>
+                                        <td class="p-4">0</td>
+                                        <td class="p-4">+2</td>
+                                        <td class="p-4 font-bold">4</td>
+                                    </tr>
+                                    <!-- Row 2 -->
+                                    <tr>
+                                        <td class="p-4">2</td>
+                                        <td class="p-4 text-gray-300">Opponent FC</td>
+                                        <td class="p-4">2</td>
+                                        <td class="p-4">1</td>
+                                        <td class="p-4">0</td>
+                                        <td class="p-4">1</td>
+                                        <td class="p-4">+1</td>
+                                        <td class="p-4 font-bold">3</td>
+                                    </tr>
+                                    <!-- Row 3 -->
+                                    <tr>
+                                        <td class="p-4">3</td>
+                                        <td class="p-4 text-gray-300">Local Stars</td>
+                                        <td class="p-4">2</td>
+                                        <td class="p-4">0</td>
+                                        <td class="p-4">2</td>
+                                        <td class="p-4">0</td>
+                                        <td class="p-4">0</td>
+                                        <td class="p-4 font-bold">2</td>
+                                    </tr>
+                                    <!-- Row 4 -->
+                                    <tr>
+                                        <td class="p-4">4</td>
+                                        <td class="p-4 text-gray-300">Rival Team</td>
+                                        <td class="p-4">2</td>
+                                        <td class="p-4">0</td>
+                                        <td class="p-4">1</td>
+                                        <td class="p-4">1</td>
+                                        <td class="p-4">-3</td>
+                                        <td class="p-4 font-bold">1</td>
+                                    </tr>
+                                    <!-- More rows can be added manually or via JS -->
+                                </tbody>
+                            </table>
+                            <!-- JS documentation for populating the table -->
+                            <pre class="bg-zinc-800 text-xs text-gray-400 p-4 rounded-b-lg overflow-x-auto hidden" id="league-table-docs">
+<!--
+Developer Note: To populate this table dynamically,
+1. Get the tbody element:
+   const tableBody = document.getElementById('league-table-body');
+2. Clear existing content:
+   tableBody.innerHTML = '';
+3. Create an array of team objects:
+   const teams = [
+     { pos: 1, name: 'Micah Soccer Academy', pld: 2, w: 1, d: 1, l: 0, gd: '+2', pts: 4, isMicah: true },
+     { pos: 2, name: 'Opponent FC', pld: 2, w: 1, d: 0, l: 1, gd: '+1', pts: 3, isMicah: false },
+     // ... more teams
+   ];
+4. Loop through the array and append rows:
+   teams.forEach(team => {
+     const row = document.createElement('tr');
+     if (team.isMicah) {
+       row.className = 'bg-brand-green/10';
+     }
+     row.innerHTML = `
+        <td class="p-4 ${team.isMicah ? 'font-bold text-brand-gold' : ''}">${team.pos}</td>
+        <td class="p-4 ${team.isMicah ? 'font-medium text-white' : 'text-gray-300'}">${team.name}</td>
+        <td class="p-4">${team.pld}</td>
+        <td class="p-4">${team.w}</td>
+        <td class="p-4">${team.d}</td>
+        <td class="p-4">${team.l}</td>
+        <td class="p-4">${team.gd}</td>
+        <td class="p-4 font-bold">${team.pts}</td>
+     `;
+     tableBody.appendChild(row);
+   });
+-->
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 sm:py-32 bg-zinc-900 sticky-nav-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center reveal-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-gold">Gallery</h2>
+                    <p class="mt-4 text-lg text-gray-300">Moments from training and matches.</p>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="rounded-lg overflow-hidden shadow-lg reveal-up">
+                        <img src="https://placehold.co/600x400/1f7a2d/ffffff?text=Training" alt="Gallery Image 1" class="w-full h-full object-cover transition duration-300 hover:scale-105">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg reveal-up" style="transition-delay: 100ms;">
+                        <img src="https://placehold.co/600x400/1f7a2d/ffffff?text=Match+Day" alt="Gallery Image 2" class="w-full h-full object-cover transition duration-300 hover:scale-105">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg reveal-up" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/600x400/1f7a2d/ffffff?text=Team+Photo" alt="Gallery Image 3" class="w-full h-full object-cover transition duration-300 hover:scale-105">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg reveal-up" style="transition-delay: 300ms;">
+                        <img src="https://placehold.co/600x400/1f7a2d/ffffff?text=Drills" alt="Gallery Image 4" class="w-full h-full object-cover transition duration-300 hover:scale-105">
+                    </div>
+                     <!-- Video Placeholder -->
+                    <div class="col-span-2 rounded-lg overflow-hidden shadow-lg bg-black flex items-center justify-center min-h-[200px] reveal-up">
+                        <p class="text-gray-500">Video Highlights Placeholder</p>
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg reveal-up">
+                        <img src="https://placehold.co/600x400/1f7a2d/ffffff?text=Action+Shot" alt="Gallery Image 5" class="w-full h-full object-cover transition duration-300 hover:scale-105">
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-lg reveal-up">
+                        <img src="https://placehold.co/600x400/1f7a2d/ffffff?text=Victory" alt="Gallery Image 6" class="w-full h-full object-cover transition duration-300 hover:scale-105">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section id="sponsors" class="py-20 sm:py-32 bg-zinc-800 sticky-nav-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center reveal-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-gold">Our Sponsors</h2>
+                    <p class="mt-4 text-lg text-gray-300">We are grateful for the support of our community partners.</p>
+                </div>
+                
+                <!-- Simple Sponsor Logo Carousel -->
+                <div class="mt-16 reveal-up">
+                    <div class="relative w-full overflow-hidden">
+                        <div class="flex animate-marquee">
+                            <div class="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/5 p-4">
+                                <img src="https://placehold.co/200x100/ffffff/cccccc?text=Sponsor+1" alt="Sponsor 1" class="w-full h-auto filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                            <div class="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/5 p-4">
+                                <img src="https://placehold.co/200x100/ffffff/cccccc?text=Sponsor+2" alt="Sponsor 2" class="w-full h-auto filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                            <div class="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/5 p-4">
+                                <img src="https://placehold.co/200x100/ffffff/cccccc?text=Sponsor+3" alt="Sponsor 3" class="w-full h-auto filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                            <div class="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/5 p-4">
+                                <img src="https://placehold.co/200x100/ffffff/cccccc?text=Sponsor+4" alt="Sponsor 4" class="w-full h-auto filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                            <div class="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/5 p-4">
+                                <img src="https://placehold.co/200x100/ffffff/cccccc?text=Sponsor+5" alt="Sponsor 5" class="w-full h-auto filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                            <!-- Duplicate for seamless loop -->
+                            <div class="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/5 p-4">
+                                <img src="https://placehold.co/200x100/ffffff/cccccc?text=Sponsor+1" alt="Sponsor 1" class="w-full h-auto filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                            <div class="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/5 p-4">
+                                <img src="https://placehold.co/200x100/ffffff/cccccc?text=Sponsor+2" alt="Sponsor 2" class="w-full h-auto filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                            <div class="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/5 p-4">
+                                <img src="https://placehold.co/200x100/ffffff/cccccc?text=Sponsor+3" alt="Sponsor 3" class="w-full h-auto filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12 reveal-up">
+                    <a href="#contact" class="bg-brand-gold text-black font-bold py-3 px-8 rounded-lg shadow-xl text-lg hover:bg-yellow-300 transition duration-300 transform hover:scale-105">
+                        Become a Sponsor
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 sm:py-32 bg-zinc-900 sticky-nav-padding">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center reveal-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-gold">Get in Touch</h2>
+                    <p class="mt-4 text-lg text-gray-300">Contact us for trial information, sponsorships, or any other inquiries.</p>
+                </div>
+                
+                <form class="mt-16 max-w-xl mx-auto reveal-up" style="transition-delay: 200ms;">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300">Full Name</label>
+                            <input type="text" id="name" class="mt-1 block w-full bg-zinc-800 border-zinc-700 rounded-lg shadow-sm p-3 text-white focus:border-brand-gold focus:ring focus:ring-brand-gold focus:ring-opacity-50">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300">Email Address</label>
+                            <input type="email" id="email" class="mt-1 block w-full bg-zinc-800 border-zinc-700 rounded-lg shadow-sm p-3 text-white focus:border-brand-gold focus:ring focus:ring-brand-gold focus:ring-opacity-50">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="subject" class="block text-sm font-medium text-gray-300">Subject</label>
+                        <input type="text" id="subject" class="mt-1 block w-full bg-zinc-800 border-zinc-700 rounded-lg shadow-sm p-3 text-white focus:border-brand-gold focus:ring focus:ring-brand-gold focus:ring-opacity-50">
+                    </div>
+                    <div class="mt-6">
+                        <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
+                        <textarea id="message" rows="5" class="mt-1 block w-full bg-zinc-800 border-zinc-700 rounded-lg shadow-sm p-3 text-white focus:border-brand-gold focus:ring focus:ring-brand-gold focus:ring-opacity-50"></textarea>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <button type="submit" class="bg-brand-gold text-black font-bold py-3 px-12 rounded-lg shadow-xl text-lg hover:bg-yellow-300 transition duration-300 transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 border-t border-zinc-700 pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-bold text-white">
+                        MICAH <span class="text-brand-gold">SOCCER</span> ACADEMY
+                    </h3>
+                    <p class="mt-4 text-gray-400">Nurturing talent, building character. EST. 2017.</p>
+                    <!-- Social Icons -->
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-brand-gold transition duration-200">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.49-1.75.85-2.72 1.04-.78-.84-1.9-1.36-3.14-1.36-2.38 0-4.3 1.92-4.3 4.3 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.33.57-.51 1.23-.51 1.94 0 1.49.76 2.8 1.92 3.57-.7-.02-1.36-.21-1.94-.53v.05c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.3 4.3 0 0 0 4.01 2.98c-1.47 1.15-3.32 1.83-5.33 1.83-.35 0-.69-.02-1.03-.06C2.64 18.4 4.5 19 6.5 19c7.8 0 12.07-6.47 12.07-12.07 0-.18 0-.37-.01-.55.83-.6 1.56-1.35 2.14-2.2z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-brand-gold transition duration-200">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.227-.148-4.771-1.669-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.687.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.667.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-brand-gold transition duration-200">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.11 16.08c-1.897 0-3.44-.04-3.44-2.13 0-1.44.89-2.1 1.44-2.1.5 0 .89.26.89 1.12 0 .98-.56 1.11-1.22 1.11-.18 0-.31 0-.4-.04.14-1.8.84-3.47 2.5-3.47 1.07 0 1.8.44 1.8 1.34 0 .76-.4 1.16-1.24 1.16-.6 0-1.03-.22-1.03-.78 0-.4.31-.67.8-.67.75 0 1.28.37 1.28 1.18 0 .84-.52 1.54-1.57 1.84l1.11 2.37h-1.34l-.9-2.02zM15 9.38c0-.4.31-.67.8-.67.75 0 1.28.37 1.28 1.18 0 .84-.52 1.54-1.57 1.84l1.11 2.37h-1.34l-.9-2.02c-.5.05-.85.13-1.2.13-1.897 0-3.44-.04-3.44-2.13 0-1.44.89-2.1 1.44-2.1.5 0 .89.26.89 1.12 0 .98-.56 1.11-1.22 1.11-.18 0-.31 0-.4-.04.14-1.8.84-3.47 2.5-3.47 1.07 0 1.8.44 1.8 1.34 0 .76-.4 1.16-1.24 1.16-.6 0-1.03-.22-1.03-.78z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white">Quick Links</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-brand-gold">About Us</a></li>
+                        <li><a href="#programs" class="text-gray-400 hover:text-brand-gold">Programs</a></li>
+                        <li><a href="#squad" class="text-gray-400 hover:text-brand-gold">Squad</a></li>
+                        <li><a href="#fixtures" class="text-gray-400 hover:text-brand-gold">Fixtures</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-brand-gold">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter Signup -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white">Newsletter</h3>
+                    <p class="mt-4 text-gray-400">Stay up to date with academy news and events.</p>
+                    <form class="mt-4 flex">
+                        <input type="email" placeholder="Enter your email" class="flex-1 bg-zinc-800 border-zinc-700 rounded-l-lg p-3 text-white focus:border-brand-gold focus:ring-0">
+                        <button type="submit" class="bg-brand-gold text-black font-bold p-3 rounded-r-lg hover:bg-yellow-300">
+                            &rarr;
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="mt-16 pt-8 border-t border-zinc-700 text-center text-gray-500">
+                <p>&copy; 2025 Micah Soccer Academy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Rolling Ball Animation -->
+    <div id="rolling-ball" class="fixed bottom-4 left-0 z-40" style="transform: translateX(-200px);">
+         <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="48" fill="#fff" stroke="#000" stroke-width="2"/>
+            <g fill="#000">
+                <polygon points="50,12.5 59.5,37.5 86,37.5 66.2,53.5 73,78 50,62.5 27,78 33.8,53.5 14,37.5 40.5,37.5"/>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Player Profile Modal (Hidden by default) -->
+    <div class="modal-overlay" id="player-modal">
+        <div class="modal-content">
+            <button class="modal-close absolute top-4 right-5 text-white text-3xl hover:text-brand-gold" id="modal-close-btn">&times;</button>
+            <div class="modal-player-photo" id="modal-player-icon">
+                <!-- Placeholder Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+            <h2 id="modal-player-name" class="text-center text-3xl font-bold text-brand-gold mt-0">Player Name</h2>
+            <p id="modal-player-position" class="text-center text-xl text-white mb-6">Position</p>
+            
+            <div class="grid grid-cols-2 gap-4 text-center">
+                <div class="stat bg-zinc-800 p-4 rounded-lg">
+                    <p class="text-sm text-gray-400 uppercase tracking-wider">Joined Academy</p>
+                    <span id="modal-player-joined" class="text-lg font-bold text-white">--/--/----</span>
+                </div>
+                 <div class="stat bg-zinc-800 p-4 rounded-lg">
+                    <p class="text-sm text-gray-400 uppercase tracking-wider">Age</p>
+                    <span id="modal-player-age" class="text-lg font-bold text-white">--</span>
+                </div>
+            </div>
+            
+            <div class="video-placeholder">
+                Player Highlight Video
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- Mobile Navigation ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                });
+            });
+
+            // --- Sticky Header Shadow ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-xl');
+                } else {
+                    header.classList.remove('shadow-xl');
+                }
+            });
+
+            // --- Smooth Scrolling ---
+            // (Handled by `scroll-smooth` class in <html>, but this is a JS fallback)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // --- Rolling Ball Animation ---
+            const rollingBall = document.getElementById('rolling-ball');
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercentage = (scrollTop / scrollHeight);
+                const rotation = scrollPercentage * 3600; // Degrees to rotate
+                const translateX = scrollPercentage * (window.innerWidth + 200) - 200; // Move across screen
+
+                rollingBall.style.transform = `translateX(${translateX}px) rotate(${rotation}deg)`;
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+
+            // --- Scroll Reveal Animations (IntersectionObserver) ---
+            const revealElements = document.querySelectorAll('.reveal-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Optional: stop observing once visible
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- Animated Counters ---
+            const counterObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = +el.getAttribute('data-counter-target');
+                        let count = 0;
+                        const duration = 1500; // 1.5 seconds
+                        const stepTime = Math.abs(Math.floor(duration / target));
+
+                        const timer = setInterval(() => {
+                            count += 1;
+                            el.textContent = count;
+                            if (count === target) {
+                                clearInterval(timer);
+                            }
+                        }, stepTime);
+                        
+                        obs.unobserve(el); // Stop observing
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            document.querySelectorAll('[data-counter-target]').forEach(counter => {
+                counterObserver.observe(counter);
+            });
+
+
+            // --- Dynamic Programs Grid ---
+            const programs = [
+                { name: 'U8 Program', desc: 'Introduction to soccer fundamentals, focusing on fun, coordination, and teamwork.' },
+                { name: 'U10 Program', desc: 'Developing core technical skills, spatial awareness, and basic tactical understanding.' },
+                { name: 'U12 Program', desc: 'Advanced skill refinement, introduction to team strategy, and competitive play.' },
+                { name: 'U14 Program', desc: 'Focus on position-specific training, physical conditioning, and tactical discipline.' },
+                { name: 'U16 Program', desc: 'Elite training for collegiate and professional pathways. Focus on performance.' },
+                { name: 'U18 Program', desc: 'Pre-professional development, strategic gameplay, and showcase preparation.' }
+            ];
+            
+            const programsGrid = document.getElementById('programs-grid');
+            programs.forEach((program, index) => {
+                const card = document.createElement('div');
+                card.className = 'bg-zinc-900 p-8 rounded-lg shadow-lg reveal-up';
+                card.style.transitionDelay = `${index * 100}ms`;
+                card.innerHTML = `
+                    <h3 class="text-2xl font-bold text-brand-gold">${program.name}</h3>
+                    <p class="mt-4 text-gray-300">${program.desc}</p>
+                    <a href="#contact" class="inline-block mt-6 text-brand-gold font-medium hover:text-yellow-300">
+                        Sign Up &rarr;
+                    </a>
+                `;
+                programsGrid.appendChild(card);
+            });
+
+
+            // --- Interactive Squad Pitch JavaScript ---
+            
+            // Player Data (from user prompt)
+            const players = [
+                // Starting XI (4-3-3 Formation)
+                { id: 1, name: "George Arthur", position: "Goalkeeper", dob: "2011-03-12", onBench: false, isCaptain: false, coords: { top: '10%', left: '50%' } }, // GK
+                { id: 2, name: "Abraham Osato EHIGIATOR", position: "Left Back", dob: "2007-03-07", onBench: false, isCaptain: false, coords: { top: '30%', left: '20%' } }, // LB
+                { id: 3, name: "Sam Fredrick", position: "Center Back", dob: "2011-05-25", onBench: false, isCaptain: false, coords: { top: '28%', left: '40%' } }, // LCB
+                { id: 4, name: "AFFUL Kwame Kingsley", position: "Center Back", dob: "2010-04-10", onBench: false, isCaptain: false, coords: { top: '28%', left: '60%' } }, // RCB
+                { id: 5, name: "Michael Ofosu", position: "Right Back", dob: "2011-01-28", onBench: false, isCaptain: false, coords: { top: '30%', left: '80%' } }, // RB
+                { id: 6, name: "Daniel Gyamfi", position: "Defensive Midfielder", dob: "2006-11-10", onBench: false, isCaptain: true, coords: { top: '50%', left: '50%' } }, // DM (Captain)
+                { id: 7, name: "Amoasi cobbena Jeffery", position: "Central Midfielder", dob: "2010-11-01", onBench: false, isCaptain: false, coords: { top: '60%', left: '35%' } }, // LCM
+                { id: 8, name: "Collins Addo Tawiah", position: "Central Midfielder", dob: "2011-08-07", onBench: false, isCaptain: false, coords: { top: '60%', left: '65%' } }, // RCM
+                { id: 9, name: "Clement Annan", position: "Left Winger", dob: "2011-04-20", onBench: false, isCaptain: false, coords: { top: '80%', left: '25%' } }, // LW
+                { id: 10, name: "Charles Kwesi Dzuvor", position: "Center Forward", dob: "2011-09-12", onBench: false, isCaptain: false, coords: { top: '85%', left: '50%' } }, // CF
+                { id: 11, name: "Felix Essuman", position: "Right Winger", dob: "2011-04-01", onBench: false, isCaptain: false, coords: { top: '80%', left: '75%' } }, // RW
+                
+                // Substitutes
+                { id: 12, name: "PIOUS OWUSU", position: "Right/Left Winger", dob: "2010-09-19", onBench: true, isCaptain: false },
+                { id: 13, name: "CHRISTOWEL DONKOH", position: "Right Winger", dob: "2013-12-23", onBench: true, isCaptain: false },
+                { id: 14, name: "Player 14", position: "Center Forward / Left Winger", dob: "2012-02-23", onBench: true, isCaptain: false }, // Placeholder name
+                { id: 15, name: "RICHARD OKRAH", position: "Right Back", dob: "2012-07-23", onBench: true, isCaptain: false },
+                { id: 16, name: "Quaye Prince", position: "Center Back", dob: "2012-08-04", onBench: true, isCaptain: false },
+                { id: 17, name: "Wahid Iddrisu", position: "Goalkeeper", dob: "2012-06-03", onBench: true, isCaptain: false },
+            ];
+            
+            // DOM Elements for Pitch
+            const pitch = document.getElementById('pitch');
+            const bench = document.getElementById('bench');
+            const modalOverlay = document.getElementById('player-modal');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+
+            // Generic user icon as a placeholder
+            const placeholderIconSVG = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>`;
+                
+            // --- Helper Functions for Pitch ---
+            function calculateAge(dobString) {
+                const birthDate = new Date(dobString);
+                const today = new Date();
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+            
+            function formatDate(dateString) {
+                // Using a simple DD/MM/YYYY format from the DOB string
+                const [year, month, day] = dateString.split('-');
+                return `${day}/${month}/${year}`;
+            }
+
+            function createPlayerMarker(player) {
+                const playerEl = document.createElement('div');
+                playerEl.className = 'player-marker';
+                playerEl.dataset.playerId = player.id;
+                
+                let captainArmband = '';
+                if (player.isCaptain) {
+                    captainArmband = `<span class="captain-armband">C</span>`;
+                }
+
+                playerEl.innerHTML = `
+                    <div class="player-photo">${placeholderIconSVG}</div>
+                    <div class="player-name">
+                        <span>${player.name.split(' ')[0]}</span> <!-- Show first name -->
+                        ${captainArmband}
+                    </div>
+                `;
+                
+                if (!player.onBench) {
+                    playerEl.style.top = player.coords.top;
+                    playerEl.style.left = player.coords.left;
+                } else {
+                    // Bench players need slightly different styles
+                    playerEl.style.position = 'relative';
+                    playerEl.style.transform = 'none';
+                    playerEl.style.width = '100px'; // Wider for bench grid
+                    playerEl.querySelector('.player-name span').textContent = player.name; // Show full name on bench
+                }
+
+                return playerEl;
+            }
+
+            function renderSquad() {
+                pitch.innerHTML = '';
+                bench.innerHTML = '';
+                players.forEach(player => {
+                    const playerMarker = createPlayerMarker(player);
+                    if (player.onBench) {
+                        bench.appendChild(playerMarker);
+                    } else {
+                        pitch.appendChild(playerMarker);
+                    }
+                });
+            }
+            
+            function showModal(player) {
+                document.getElementById('modal-player-name').textContent = player.name;
+                document.getElementById('modal-player-position').textContent = player.position;
+                // Use the DOB string directly for "Joined"
+                document.getElementById('modal-player-joined').textContent = formatDate(player.dob);
+                document.getElementById('modal-player-age').textContent = calculateAge(player.dob);
+                document.getElementById('modal-player-icon').innerHTML = placeholderIconSVG;
+                
+                modalOverlay.classList.add('visible');
+            }
+
+            function hideModal() {
+                modalOverlay.classList.remove('visible');
+            }
+
+            // --- Event Listeners for Pitch ---
+            document.querySelector('.squad-container').addEventListener('click', function(e) {
+                const playerMarker = e.target.closest('.player-marker');
+                if (playerMarker) {
+                    const playerId = parseInt(playerMarker.dataset.playerId);
+                    const selectedPlayer = players.find(p => p.id === playerId);
+                    if (selectedPlayer) {
+                        showModal(selectedPlayer);
+                    }
+                }
+            });
+
+            modalCloseBtn.addEventListener('click', hideModal);
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) {
+                    hideModal();
+                }
+            });
+
+            // --- Initial Render ---
+            renderSquad();
+        });
+    </script>
+</body>
+</html>

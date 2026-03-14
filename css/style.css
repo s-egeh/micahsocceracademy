@@ -1,0 +1,375 @@
+/* --- 1. Base Styles & Brand Colors --- */
+        :root {
+            --color-green: #1f7a2d;
+            --color-gold: #d4af37;
+            --color-white: #ffffff;
+            --color-dark: #0f172a;
+            --color-grey: #f0f0f0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-white);
+            color: var(--color-dark);
+        }
+
+        /* Custom Tailwind Colors */
+        .bg-brand-green {
+            background-color: var(--color-green);
+        }
+
+        .bg-brand-gold {
+            background-color: var(--color-gold);
+        }
+
+        .text-brand-green {
+            color: var(--color-green);
+        }
+
+        .text-brand-gold {
+            color: var(--color-gold);
+        }
+
+        .border-brand-gold {
+            border-color: var(--color-gold);
+        }
+
+        /* --- 2. Animations --- */
+
+        /* Hero Background Animation (Ken Burns) */
+        .animate-ken-burns {
+            animation: ken-burns-top 8s ease-in-out infinite alternate-reverse both;
+        }
+
+        @keyframes ken-burns-top {
+            0% {
+                transform: scale(1) translateY(0);
+                transform-origin: 50% 16%;
+            }
+
+            100% {
+                transform: scale(1.1) translateY(-10px);
+                transform-origin: top;
+            }
+        }
+
+        /* Rolling Football */
+        #rolling-ball {
+            position: fixed;
+            bottom: 10px;
+            left: -50px;
+            /* Start off-screen */
+            font-size: 40px;
+            z-index: 100;
+            transition: transform 0.1s linear;
+            will-change: transform;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sticky Header Scroll Style */
+        .header-scrolled {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Mobile Menu Overlay */
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* --- 3. Interactive Squad Map CSS (Adapted from User) --- */
+        /* This CSS is specifically for the #squad section */
+        #squad {
+            background-color: #f9fafb;
+            /* Light grey background for this section */
+        }
+
+        .squad-container {
+            width: 100%;
+            max-width: 900px;
+            /* Increased max-width for better desktop view */
+            margin: auto;
+            padding: 1rem;
+        }
+
+        .pitch-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 7 / 10;
+            margin-bottom: 2rem;
+            background-color: #2a8a3e;
+            /* Brighter pitch green */
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .pitch-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .player-marker {
+            position: absolute;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            width: 80px;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .player-marker:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .player-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--color-grey);
+            border: 3px solid var(--color-gold);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .player-photo svg {
+            width: 80%;
+            height: 80%;
+            color: #6b7280;
+            /* Grey icon color */
+        }
+
+        .player-name {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--color-white);
+            font-size: 12px;
+            font-weight: 600;
+            /* Semibold */
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 4px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .captain-armband {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+            font-weight: bold;
+            font-size: 10px;
+            width: 16px;
+            /* Slightly larger */
+            height: 16px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The Substitutes Bench */
+        .bench {
+            background-color: var(--color-white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .bench-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1.5rem;
+            justify-items: center;
+        }
+
+        .bench .player-marker {
+            position: static;
+            transform: none;
+            width: 100px;
+        }
+
+        .bench .player-marker:hover {
+            transform: scale(1.1);
+        }
+
+        .bench .player-photo {
+            width: 70px;
+            height: 70px;
+        }
+
+        .bench .player-name {
+            font-size: 13px;
+            color: var(--color-white);
+        }
+
+        /* Player Profile Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            /* Darker overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--color-white);
+            /* White modal */
+            border: 2px solid var(--color-gold);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            color: var(--color-dark);
+            /* Dark text */
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.visible .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #f0f0f0;
+            border: none;
+            color: var(--color-dark);
+            font-size: 20px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-player-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--color-gold);
+            margin: 0 auto 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-grey);
+        }
+
+        .modal-player-photo svg {
+            width: 80%;
+            height: 80%;
+            color: #6b7280;
+        }
+
+        #modal-player-name {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-green);
+            /* Green name */
+            margin: 0;
+        }
+
+        #modal-player-position {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .player-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat p {
+            margin: 0;
+            font-size: 1rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .stat span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-dark);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            color: #888;
+            font-size: 1.2rem;
+            border: 1px dashed #555;
+        }
+    
+
+/* --- Added by Phase 1 --- */
+.font-oswald {
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}

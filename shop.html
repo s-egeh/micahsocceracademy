@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/jpeg" href="Micah.jpg">
+    <title>Official Store | Micah Soccer Academy Merchandise</title>
+    <meta name="description" content="Official Micah Soccer Academy merchandise, kits, and training wear.">
+    <meta property="og:title" content="Official Store | Micah Soccer Academy">
+    <meta property="og:description" content="Shop official Micah Soccer Academy kits, training wear, and merchandise.">
+    <meta property="og:image" content="Micah.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <!-- Placeholder Logo -->
+                    <span class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-green">
+                        <span class="font-bold text-xl text-white">M</span>
+                    </span>
+                    <span class="font-extrabold text-2xl text-brand-green">MICAH</span>
+                    <span class="font-semibold text-2xl text-gray-700">SOCCER</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="font-semibold text-gray-700 hover:text-brand-green transition">Home</a>
+                    <a href="index.html#about" class="font-semibold text-gray-700 hover:text-brand-green transition">About</a>
+                    <a href="index.html#programs"
+                        class="font-semibold text-gray-700 hover:text-brand-green transition">Programs</a>
+                    <a href="index.html#squad" class="font-semibold text-gray-700 hover:text-brand-green transition">Squad</a>
+                    <a href="index.html#league" class="font-semibold text-gray-700 hover:text-brand-green transition">League</a>
+                    <a href="index.html#gallery" class="font-semibold text-gray-700 hover:text-brand-green transition">Gallery</a>
+                    <a href="booking.html" class="font-semibold text-gray-700 hover:text-brand-green transition">Contact</a>
+                    <a href="index.html#sponsors"
+                        class="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#d4af37] to-[#f3e5ab] text-black shadow-xl text-black font-bold text-sm shadow-lg hover:bg-opacity-90 transition transform hover:scale-105">
+                        Sponsor
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed top-0 left-0 w-full h-screen bg-white z-50 flex-col items-center justify-center space-y-6 hidden opacity-0">
+            <button id="mobile-menu-close-btn" class="absolute top-8 right-6 text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <a href="#home" class="mobile-nav-link text-3xl font-bold text-gray-800">Home</a>
+            <a href="index.html#about" class="mobile-nav-link text-3xl font-bold text-gray-800">About</a>
+            <a href="index.html#programs" class="mobile-nav-link text-3xl font-bold text-gray-800">Programs</a>
+            <a href="index.html#squad" class="mobile-nav-link text-3xl font-bold text-gray-800">Squad</a>
+            <a href="index.html#league" class="mobile-nav-link text-3xl font-bold text-gray-800">League</a>
+            <a href="index.html#gallery" class="mobile-nav-link text-3xl font-bold text-gray-800">Gallery</a>
+            <a href="booking.html" class="mobile-nav-link text-3xl font-bold text-gray-800">Contact</a>
+            <a href="index.html#sponsors" class="mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-[#d4af37] to-[#f3e5ab] text-black shadow-xl text-black font-bold text-lg">
+                Sponsor Us
+            </a>
+        </div>
+    </header>
+
+    <!-- Shop Hero -->
+    <section class="pt-32 pb-16 bg-gray-900 border-b-4 border-brand-gold text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://placehold.co/1920x400/111/222')] bg-cover bg-center opacity-30"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="font-oswald text-5xl md:text-6xl font-extrabold uppercase mb-4 text-white">Official <span class="text-brand-gold">Academy Store</span></h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">Wear the badge with pride. Explore our authentic kits, training gear, and supporter apparel.</p>
+        </div>
+    </section>
+
+    <!-- Main Shop Area -->
+    <main class="flex-grow py-16 container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Filter Bar -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-10 border-b border-gray-200 pb-4">
+            <div class="flex space-x-4 overflow-x-auto mb-4 sm:mb-0 pb-2 sm:pb-0 w-full sm:w-auto">
+                <button class="px-4 py-2 bg-brand-green text-white font-bold rounded-lg text-sm whitespace-nowrap">All Products</button>
+                <button class="px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 font-bold rounded-lg text-sm border border-gray-200 whitespace-nowrap transition">Home Kits</button>
+                <button class="px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 font-bold rounded-lg text-sm border border-gray-200 whitespace-nowrap transition">Training Wear</button>
+                <button class="px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 font-bold rounded-lg text-sm border border-gray-200 whitespace-nowrap transition">Accessories</button>
+            </div>
+            
+            <div class="w-full sm:w-auto">
+                <select class="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-gold text-gray-700 w-full">
+                    <option>Sort by: Newest</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-2xl border border-gray-100 overflow-hidden transition duration-300 group">
+                <div class="relative aspect-square overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img src="https://placehold.co/400x400/2a8a3e/ffffff?text=Home+Jersey" alt="Home Jersey" class="object-cover w-3/4 h-3/4 group-hover:scale-110 transition duration-500">
+                    <span class="absolute top-4 left-4 bg-brand-gold text-black text-xs font-bold px-2 py-1 rounded">NEW</span>
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Matchwear</p>
+                    <h3 class="font-oswald text-xl font-bold text-gray-900 mb-2">25/26 Home Jersey</h3>
+                    <p class="text-brand-green font-bold text-lg mb-4">₵250.00</p>
+                    <button class="w-full py-3 bg-gray-900 text-white font-bold rounded-lg hover:bg-brand-green transition">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-2xl border border-gray-100 overflow-hidden transition duration-300 group">
+                <div class="relative aspect-square overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img src="https://placehold.co/400x400/d4af37/000000?text=Away+Jersey" alt="Away Jersey" class="object-cover w-3/4 h-3/4 group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Matchwear</p>
+                    <h3 class="font-oswald text-xl font-bold text-gray-900 mb-2">25/26 Away Jersey</h3>
+                    <p class="text-brand-green font-bold text-lg mb-4">₵250.00</p>
+                    <button class="w-full py-3 bg-gray-900 text-white font-bold rounded-lg hover:bg-brand-green transition">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-2xl border border-gray-100 overflow-hidden transition duration-300 group">
+                <div class="relative aspect-square overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img src="https://placehold.co/400x400/111111/ffffff?text=Training+Top" alt="Training Top" class="object-cover w-3/4 h-3/4 group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Training</p>
+                    <h3 class="font-oswald text-xl font-bold text-gray-900 mb-2">Elite Drill Top</h3>
+                    <p class="text-brand-green font-bold text-lg mb-4">₵180.00</p>
+                    <button class="w-full py-3 bg-gray-900 text-white font-bold rounded-lg hover:bg-brand-green transition">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-2xl border border-gray-100 overflow-hidden transition duration-300 group">
+                <div class="relative aspect-square overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img src="https://placehold.co/400x400/eeeeee/111111?text=Cap" alt="Cap" class="object-cover w-3/4 h-3/4 group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Accessories</p>
+                    <h3 class="font-oswald text-xl font-bold text-gray-900 mb-2">Supporter Cap</h3>
+                    <p class="text-brand-green font-bold text-lg mb-4">₵85.00</p>
+                    <button class="w-full py-3 bg-gray-900 text-white font-bold rounded-lg hover:bg-brand-green transition">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Column 1: Logo & Socials -->
+                <div>
+                    <a href="index.html" class="flex items-center space-x-2 mb-4">
+                        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-green">
+                            <span class="font-bold text-xl text-white">M</span>
+                        </span>
+                        <span class="font-extrabold text-2xl text-white">MICAH SOCCER</span>
+                    </a>
+                    <p class="text-sm">Nurturing the next generation of professional talent in Ghana.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <!-- Social Icons (Placeholders) -->
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M..."></path>
+                            </svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M..."></path>
+                            </svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M..."></path>
+                            </svg></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="font-oswald font-oswald font-bold text-lg text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#programs" class="hover:text-white transition">Programs</a></li>
+                        <li><a href="#squad" class="hover:text-white transition">The Squad</a></li>
+                        <li><a href="#league" class="hover:text-white transition">League Table</a></li>
+                        <li><a href="booking.html" class="hover:text-white transition">Book Trial</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Academy -->
+                <div>
+                    <h4 class="font-oswald font-oswald font-bold text-lg text-white mb-4">Academy</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#coaches" class="hover:text-white transition">Coaches</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition">Gallery</a></li>
+                        <li><a href="#sponsors" class="hover:text-white transition">Sponsors</a></li>
+                        <li><a href="#" class="hover:text-white transition">Admin Login</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Placeholder (Shop) -->
+                <div>
+                    <h4 class="font-oswald font-oswald font-bold text-lg text-white mb-4">Shop (Coming Soon)</h4>
+                    <ul class="space-y-2">
+                        <li><a href="shop.html" class="hover:text-white transition">Academy Kits</a></li>
+                        <li><a href="shop.html" class="hover:text-white transition">Merchandise</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-gray-800 text-center text-sm">
+                <p>&copy; 2025 Micah Soccer Academy. All Rights Reserved. Developed with passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js" defer></script>
+</body>
+</html>
