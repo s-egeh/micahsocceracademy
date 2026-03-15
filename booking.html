@@ -141,8 +141,11 @@
                         </div>
                     </div>
                     <div class="p-8 md:col-span-2">
-                        <form id="booking-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
-                            <input type="hidden" name="_subject" value="Micah Academy Trial Registration">
+                        <form id="booking-form" action="https://formsubmit.co/egehsebastian66@gmail.com" method="POST" class="space-y-6">
+                            <input type="hidden" name="_subject" value="New Trial Registration - Micah Soccer Academy">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="https://micahsocceracademy.com/booking.html">
                             <!-- Step 1: Player Details -->
                             <div class="form-step" data-step="1">
                                 <h4 class="font-oswald text-xl font-bold text-gray-900 border-b border-gray-200 pb-2 mb-4">Step 1: Player Details</h4>
@@ -406,14 +409,15 @@
                 if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
                 fetch(form.action, {
                     method: 'POST',
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                }).then(function (r) { return r.json(); }).then(function () {
-                    formWrapper.classList.add('hidden');
-                    successCard.classList.remove('hidden');
+                    body: new FormData(form)
+                }).then(function (r) {
+                    if (r.ok) {
+                        formWrapper.classList.add('hidden');
+                        successCard.classList.remove('hidden');
+                    } else { throw new Error('Submit failed'); }
                 }).catch(function () {
                     if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Registration'; }
-                    alert('Submission failed. Check the form action URL or try again.');
+                    alert('Submission failed. Please check your connection and try again, or contact us directly.');
                 });
             });
         });
