@@ -1,0 +1,8 @@
+[
+  {"pos":1,"name":"Micah Academy","pld":1,"w":1,"d":0,"l":0,"gd":2,"pts":3},
+  {"pos":2,"name":"Senya Sharks FC","pld":1,"w":1,"d":0,"l":0,"gd":1,"pts":3},
+  {"pos":3,"name":"Obrachere Stars","pld":1,"w":0,"d":1,"l":0,"gd":0,"pts":1},
+  {"pos":4,"name":"Awutu Waves","pld":1,"w":0,"d":1,"l":0,"gd":0,"pts":1},
+  {"pos":5,"name":"Community FC","pld":1,"w":0,"d":0,"l":1,"gd":-1,"pts":0},
+  {"pos":6,"name":"District United","pld":1,"w":0,"d":0,"l":1,"gd":-2,"pts":0}
+]
